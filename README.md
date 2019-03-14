@@ -1,7 +1,7 @@
 # Desafio ServiceNet - FrontEnd.
 # Modo de Execução (Windows) :
 
-. Ao fazer o download do arquivo projeto-master.zip, extrair a pasta desafio-master;
+. Ao fazer o download do arquivo desafio-master.zip, extrair a pasta desafio-master;
 
 . Abrir o terminal e digitar: (diretório do projeto)\cd desafio-master (exemplo: C:\User\Desktop\cd desafio-master);
 
