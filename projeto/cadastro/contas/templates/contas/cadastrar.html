@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" href="img/favicon.ico">
+    {% load bootstrap3 %}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+
+<style>
+
+body{
+  background-image: url('img/bg.JPG');
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  height: 700px;
+  background-color: #636e72;
+}
+
+</style>
+
+
+</head>
+<body>
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="http://www.servicenet.com.br" target="_blank">
+   <img src="http://www.servicenet.com.br/public/default/images/logomarca.png" width="150" height="30" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Alterna navegação">
+   <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarToggler">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+       <a class="nav-link" href="{% url 'clientes:listar_clientes' %}">Home <span class="sr-only">(Página atual)</span></a>
+      </li>
+      <li class="nav-item">
+           <a class="nav-link" ></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" ></a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="row justify-content-center" style="margin-top: 10rem;">
+  <div class="col-md-5">
+    <div class="card">
+      <h5 class="card-header" style="background-color: lightgrey">Escolha sua forma de entrar</h5>
+      <a class="card-body" id="caixa">
+        <button type="button" class="btn btn-outline-dark btn-block" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">Login</button>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+             <form class="site-form" action="{% url 'contas:login' %}" method="post">
+               {% csrf_token %}
+               <div class="form-group">
+                   {% if form.errors %}
+                     <div class="alert alert-danger">
+                         <strong>{{ form.non_field_errors }}</strong>
+                     </div>
+                   {% endif %}
+                 <label for="id_username">Nome de Usuário</label>
+                 <input type="username" class="form-control" id="id_username" placeholder="Usuário" {{ form.username }}  >
+                   <small>Insira seu nome de usuário.</small>
+               </div>
+               <div class="form-group">
+                 <label for="InputSenha">Senha</label>
+                 <input type="password" class="form-control" id="InputSenha" placeholder="Senha" required {{ form.password }}  >
+                   <small>Insira sua senha.</small>
+               </div>
+                 {% if request.GET.next %}
+                   <input type="hidden" name="next" value="{{ request.GET.next }}">
+                 {% endif %}
+               <button type="submit"  class="btn btn-primary" value="Login">Enviar</button>
+            </form>
+          </div>
+        </div>
+        <button type="button" class="btn btn-outline-dark btn-block" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapseExample" style="margin-bottom: 10px;">Cadastrar-se</button>
+        <div class="collapse" id="collapse">
+          <div class="card card-body">
+            <form class="site-form" action="/contas/signup/" method="post">
+                {% csrf_token %}
+               <div class="form-group">
+                 <label for="InputUser">Nome de Usuário</label>
+                 <input type="username" class="form-control" id="InputUser" placeholder="Usuário" {{ form.username }}>
+                 <small>Insira o nome de usuário.</small>
+               </div>
+                <div class="form-group">
+                 <label for="InputUser">Email</label>
+                 <input type="email" class="form-control" id="InputUser" placeholder="Email" {{ form.email }}>
+               </div>
+               <div class="form-group">
+                 <label for="InputSenha">Senha</label>
+                 <input type="password" class="form-control" id="id_password1" placeholder="Senha" {{ form.password1 }}>
+                 <small>Insira sua senha.</small>
+               </div>
+                <div class="form-group">
+                 <label for="InputSenha">Confirme sua senha</label>
+                 <input type="password" class="form-control" id="id_password2" placeholder="Confirmar Senha" {{ form.password2 }}>
+                 <small>Confirme a senha que você inseriu.</small>
+                </div>
+             <button type="submit" value="Signup" class="btn btn-primary">Enviar</button>
+            </form>
+          </div>
+        </div>
+          {% load socialaccount %}
+          {% providers_media_js %}
+          <a href="{% provider_login_url "facebook" method="js_sdk" %}" ><button type="button"  class="btn btn-block" id="Facebook" style="background-color: #3b5998; color: white; " >Entrar com Facebook</button></a>
+      </div>
+    </div>
+  </div>

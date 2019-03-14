@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    {% load bootstrap3 %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+  <style type="text/css">
+body {
+  background-color: lightgrey;
+}
+</style>
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="http://www.servicenet.com.br" target="_blank">
+   <img src="http://www.servicenet.com.br/public/default/images/logomarca.png" width="150" height="30" alt="">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Alterna navegação">
+   <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarToggler">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+       <a class="nav-link" href="{% url 'clientes:listar_clientes' %}">Home <span class="sr-only">(Página atual)</span></a>
+      </li>
+      <li class="nav-item">
+           <a class="nav-link" ></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" ></a>
+      </li>
+    </ul>
+    <div class="dropdown" style="margin-right: 65px">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ user.username}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <form class="logout-link" action="{% url 'contas:logout'%}" method="post">
+           {% csrf_token %}
+           <button class="dropdown-item" type="submit">Sair</button>
+          </form>
+        </div>
+    </div>
+  </div>
+</nav>
+
+{% block content %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Nome</th>
+      <th>Endereco</th>
+      <th>Telefone</th>
+      <th>Numero</th>
+      <th>Cidade</th>
+      <th>Estado</th>
+      <th>País</th>
+      <th>CEP</th>
+      <th>Ação</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for cliente in lista %}
+    <tr>
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.endereco }}</td>
+      <td>{{ cliente.telefone }}</td>
+      <td>{{ cliente.numero }}</td>
+      <td>{{ cliente.cidade }}</td>
+      <td>{{ cliente.estado }}</td>
+      <td>{{ cliente.pais }}</td>
+      <td>{{ cliente.cep }}</td>
+      <td>
+        <a href="{% url 'clientes:cliente_edit' pk=cliente.id %}" class="btn btn-outline-primary">
+          Editar
+        </a>
+        <a href="{% url 'clientes:cliente_remove' pk=cliente.id %}"
+                      class="btn btn-outline-danger">
+                        Excluir
+        </a>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<div class="text-right">
+<a href="{% url 'clientes:cliente_new' %}">
+<button type="submit" class="btn btn-primary">
+    Cadastrar
+</button>
+</a>
+</div>
+
+{% endblock content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
