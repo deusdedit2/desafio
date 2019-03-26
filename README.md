@@ -1,21 +1,27 @@
 # Desafio ServiceNet - FrontEnd.
-# Modo de Execução:
+# Modo de Execução (Windows) :
 
-. Ao fazer o download do arquivo projeto-master.zip, extrair as pastas do arquivo projeto.rar;
+* Ao fazer o download do arquivo desafio-master.zip, extrair a pasta desafio-master;
 
-. Abrir o terminal e digitar: (diretório do projeto)/cd venv (exemplo: C:/Disco Local/User/Desktop/projeto/cd venv)
+* Abrir o terminal e digitar: (diretório do projeto)\cd desafio-master (exemplo: C:\User\Desktop\cd desafio-master);
 
-. Estando dentro da pasta venv pelo terminal, digitar: Scripts\activate ;
+* Dentro da pasta pelo terminal, digitar: (diretório do projeto)\cd projeto (exemplo: C:\User\Desktop\desafio-master\cd projeto);
 
-. Com o ambiente virtual ativado, digitar: cd .. (significando que vai voltar à pasta anterior. Exemplo: (venv) C:/Disco Local/User/Desktop/projeto/venv/cd ..);
+* Para ativar a VirtualEnv, é preciso entrar na pasta: (diretório do projeto)\cd venv (exemplo: C:\User\Desktop\desafio-master\projeto\cd venv)
 
-. Voltando à pasta do projeto pelo terminal, digitar: cd cadastro  (exemplo: C:/Disco Local/User/Desktop/projeto/ cd cadastro);
+* Pronto. Dentro da pasta da VirtualEnv pelo terminal. Para ativá-la, digitar: Scripts\activate (exemplo: C:\User\Desktop\desafio-master\projeto\venv\ Scripts\activate) ;
 
-. Dentro da pasta cadastro, digitar: python manage.py runserver;
+* A VirtualEnv será ativada (Exemplo de como ficará no terminal: (venv) C:\User\Desktop\desafio-master\projeto\venv );
 
-. Ao fazer isso, o ambiente virtual vai rodar o servidor e vai indicar o local em que está rodando (normalmente é 127.0.0.1:8000 ou só localhost:8000);
+* Com a VirtualEnv ativada, é necessário retroceder um diretório para poder rodar o projeto em si, digitando o comando: cd .. (Exemplo: (venv) C:\User\Desktop\desafio-master\projeto\venv\cd .. ); 
 
-. Para acessar a página de crud, é necessário que se faça o login ou cadastro. Para isso, digitar: 127.0.0.1:8000/contas/login ou 127.0.0.1:8000/contas/signup.
+* Voltando à pasta do projeto pelo terminal, digitar: cd cadastro  (exemplo: (venv) C:\User\Desktop\desafio-master\projeto\cd cadastro);
 
-* Para acessar a página de admin, digitar 127.0.0.1/admin. O user: Deus / senha: superuser
+* Dentro da pasta cadastro pelo terminal, digitar: python manage.py runserver (Exemplo: (venv) C:\User\Desktop\desafio-master\projeto\cadastro\python manage.py runserver );
+
+* Ao fazer isso, o ambiente virtual vai rodar o servidor e vai indicar o local em que está rodando (normalmente é 127.0.0.1:8000 ou só localhost:8000);
+
+* Para acessar a página de crud, é necessário que se faça o login ou cadastro. Para isso, digitar: 127.0.0.1:8000/contas/login ou 127.0.0.1:8000/contas/signup.
+
+* Para acessar a página de admin, digitar 127.0.0.1:8000/admin. User: Deus / Senha: superuser
 

@@ -1,0 +1,9 @@
+#Changelog CRUD-DJANGO Servicenet
+
+Versão: 0.0.1
+
+Versões da VirtualEnv:
+* Django: 1.10.5
+* Django-allauth: 0.39.1
+* Django-Bootstrap3: 8.1.0
+* pip: 10.0.1
